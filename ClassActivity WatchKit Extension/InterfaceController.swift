@@ -1,7 +1,8 @@
 //
 //  InterfaceController.swift
 //  ClassActivity WatchKit Extension
-//hgh
+//hghsa
+
 //  Created by Charmi Mehta on 2019-03-07.
 //  Copyright © 2019 Charmi Mehta. All rights reserved.hggdhsgchs jbjhkh
 //
@@ -13,7 +14,7 @@ import WatchConnectivity
 
 class InterfaceController: WKInterfaceController , WCSessionDelegate{
     
-    
+//
     @IBOutlet weak var messageLabel: WKInterfaceLabel!
       var session : WCSession?
     
@@ -26,8 +27,8 @@ class InterfaceController: WKInterfaceController , WCSessionDelegate{
         WKInterfaceDevice().play(.click)
         
         // output a debug message to the terminal
-        print("Got a message!")
-        messageLabel.setText(applicationContext["message"] as? String)
+//        print("Got a message!")
+//        messageLabel.setText(applicationContext["message"] as? String)
     }
    
     
