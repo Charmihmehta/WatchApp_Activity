@@ -27,8 +27,8 @@ class InterfaceController: WKInterfaceController , WCSessionDelegate{
         WKInterfaceDevice().play(.click)
         
         // output a debug message to the terminal
-//        print("Got a message!")
-//        messageLabel.setText(applicationContext["message"] as? String)
+        print("Got a message!")
+        messageLabel.setText(applicationContext["message"] as? String)
     }
    
     
