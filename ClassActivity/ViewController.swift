@@ -3,7 +3,7 @@
 //  ClassActivity
 //
 //  Created by Charmi Mehta on 2019-03-07.
-//  Copyright © 2019 Charmi Mehta. All rights reserved.
+//  Copyright © 2019 Charmi Mehta. All rights reserved. jkjk
 //
 
 import UIKit
