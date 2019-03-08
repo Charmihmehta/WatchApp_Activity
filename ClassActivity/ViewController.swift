@@ -9,6 +9,12 @@
 import UIKit
 import WatchConnectivity
 
+struct listGame{
+    var list:String
+    var date: String
+    var flag: Bool
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,WCSessionDelegate {
     
     @IBOutlet weak var tableView: UITableView!
@@ -16,9 +22,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var subscribeBtn: UIButton!
     var wcSession : WCSession!
     
+    var listgame = [listGame(list: "Germany-China", date: "08 June 2019", flag: true) , listGame(list: "Spain-South Africa", date: "08 June 2019", flag: true), listGame(list: "Norway-Nigeria" , date: "08 June 2019", flag: true), listGame(list: "Austraila-Italy", date: "09 June 2019", flag: true), listGame(list: "Brazil-Jamaica" , date: "0 June 2019", flag: true), listGame(list: "England-Scotland", date: "09 June 2019", flag: true)]
   
-    let list = ["Germany-China" ,"Spain-South Africa","Norway-Nigeria" , "Austraila-Italy" , "Brazil-Jamaica" , "England-Scotland"]
-    let date = ["08 June 2019" , "08 June 2019" , "08 June 2019" , "09 June 2019", "09 June 2019", "09 June 2019"]
+//    let list = ["Germany-China" ,"Spain-South Africa","Norway-Nigeria" , "Austraila-Italy" , "Brazil-Jamaica" , "England-Scotland"]
+//    let date = ["08 June 2019" , "08 June 2019" , "08 June 2019" , "09 June 2019", "09 June 2019", "09 June 2019"]
     
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
@@ -51,7 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return list.count
+            return listgame.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,8 +67,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        if cell == nil {
 //            cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "cell") as! TableViewCell
 //        }
-        cell.textLabel?.text = list[indexPath.row]
-        cell.detailTextLabel?.text = date[indexPath.row]
+        cell.textLabel?.text = listgame[indexPath.row].list
+        cell.detailTextLabel?.text = listgame[indexPath.row].date
+        if(listgame[indexPath.row].flag == true){
+            cell.subscribeBtn.setTitle("Subscribe", for: .normal)
+        }
+        else{
+            cell.subscribeBtn.setTitle("Unsubscribe", for: .normal)
+        }
     
         cell.subscribeBtn.tag = indexPath.row
         cell.subscribeBtn.addTarget(self, action: "BtnAction:", for: .allEvents)
@@ -75,7 +88,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func BtnAction(_ sender: UIButton){
         print("You have clicked subscribe to the notification")
         let no = sender.tag
+        
+        listgame[no].flag = listgame[no].flag == true ? false : true
+        tableView.reloadData()
         print(no)
+        
     }
 
     @IBAction func btnClick(_ sender: Any) {
