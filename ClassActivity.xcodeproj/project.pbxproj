@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1AA1FA222333FCA004C0016 /* MenuItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AA1FA122333FCA004C0016 /* MenuItemController.swift */; };
 		FC1D5D10223168830095F85B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1D5D0F223168830095F85B /* AppDelegate.swift */; };
 		FC1D5D12223168830095F85B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1D5D11223168830095F85B /* ViewController.swift */; };
 		FC1D5D15223168830095F85B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1D5D13223168830095F85B /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C1AA1FA122333FCA004C0016 /* MenuItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemController.swift; sourceTree = "<group>"; };
 		FC1D5D0C223168830095F85B /* ClassActivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassActivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC1D5D0F223168830095F85B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC1D5D11223168830095F85B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				FC1D5D3A223168840095F85B /* Assets.xcassets */,
 				FC1D5D3C223168840095F85B /* Info.plist */,
 				FC1D5D3D223168840095F85B /* PushNotificationPayload.apns */,
+				C1AA1FA122333FCA004C0016 /* MenuItemController.swift */,
 			);
 			path = "ClassActivity WatchKit Extension";
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 			files = (
 				FC1D5D37223168840095F85B /* NotificationController.swift in Sources */,
 				FC1D5D39223168840095F85B /* ComplicationController.swift in Sources */,
+				C1AA1FA222333FCA004C0016 /* MenuItemController.swift in Sources */,
 				FC1D5D35223168840095F85B /* ExtensionDelegate.swift in Sources */,
 				FC1D5D33223168840095F85B /* InterfaceController.swift in Sources */,
 			);

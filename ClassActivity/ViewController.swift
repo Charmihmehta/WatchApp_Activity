@@ -19,11 +19,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var subscribeBtn: UIButton!
     var wcSession : WCSession!
-    
+    let dic1  = NSMutableDictionary()
     var listgame = [listGame(list: "Germany-China", date: "08 June 2019", flag: true) , listGame(list: "Spain-South Africa", date: "08 June 2019", flag: true), listGame(list: "Norway-Nigeria" , date: "08 June 2019", flag: true), listGame(list: "Austraila-Italy", date: "09 June 2019", flag: true), listGame(list: "Brazil-Jamaica" , date: "0 June 2019", flag: true), listGame(list: "England-Scotland", date: "09 June 2019", flag: true)]
   
+   
 //    let list = ["Germany-China" ,"Spain-South Africa","Norway-Nigeria" , "Austraila-Italy" , "Brazil-Jamaica" , "England-Scotland"]
 //    let date = ["08 June 2019" , "08 June 2019" , "08 June 2019" , "09 June 2019", "09 June 2019", "09 June 2019"]
     
@@ -31,7 +33,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
     }
-    
     func sessionDidBecomeInactive(_ session: WCSession) {
         
     }
@@ -40,10 +41,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    
- 
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -54,6 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.dataSource = self
         
         self.tableView.reloadData()
+        print("Array Data: \(listgame)")
     }
     
    
@@ -85,6 +84,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print("You selected cell #\(indexPath.row)!")
     }
     
+    
+    
+    // func sends array data to watch
+    func sendToWatch(){
+        let session = WCSession.default
+        
+        if session.activationState == .activated {
+            let appDictionary = ["Array": listgame]
+            do {
+                try session.updateApplicationContext(appDictionary)
+            } catch {
+                print(error)
+            }
+            dic1.setObject(listgame, forKey: "myKey" as NSCopying)
+            print("My array = \(dic1.object(forKey: "myKey") as! String)")
+//                    UserDefaults().set(listGame.self, forKey: "myList")
+//                    if let loadedCart = UserDefaults().array(forKey: "myList") as? [[String: AnyObject]] {
+//                        print(loadedCart)
+//                        for item in loadedCart {
+//                            print(item["list"] as! String)
+//                            print(item["date"] as! Date)
+//                            print(item["flag"] as! Bool)
+//                        }
+//                    }
+
+            }
+        }
+    
+   
+    
     @IBAction func BtnAction(_ sender: UIButton){
         print("You have clicked subscribe to the notification")
         let no = sender.tag
@@ -95,19 +124,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
 
+    @IBAction func sendBtnClick(_ sender: Any) {
+        sendToWatch()
+        print(listgame)
+    }
+    
     @IBAction func btnClick(_ sender: Any) {
        if(subscribeBtn.titleLabel?.text == "Subscribe")
        {
          print("You have subscribe to the notification")
-          NSLog("%@", "button 1")
-          subscribeBtn.setTitle("UnSubscribe", for: .normal)
+         NSLog("%@", "button 1")
+         subscribeBtn.setTitle("UnSubscribe", for: .normal)
         
-        let message = ["message" : "message sent"]
-        do {
-            try wcSession.updateApplicationContext(message)
-        } catch {
-            print("Something went wrong")
-        }
+//        let message = ["message" : "message sent"]
+//        do {
+//            try wcSession.updateApplicationContext(message)
+//        } catch {
+//            print("Something went wrong")
+//        }
        
         }
        else if (subscribeBtn.titleLabel?.text == "UnSubscribe"){

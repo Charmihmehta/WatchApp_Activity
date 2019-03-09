@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EVu-Aq-XZF">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,73 @@
     </dependencies>
     <scenes>
         <!--Interface Controller-->
+        <scene sceneID="6vE-hO-UPj">
+            <objects>
+                <controller id="EVu-Aq-XZF">
+                    <items>
+                        <button width="1" alignment="left" title="Schedule List" id="RQu-rG-UFx">
+                            <connections>
+                                <segue destination="QR3-8B-2EJ" kind="push" id="90Y-bg-NPn"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Subscribe List" id="Ebn-EY-FgN">
+                            <connections>
+                                <segue destination="3oP-n0-kQe" kind="push" id="B4J-2b-pQa"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-251" y="-14"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="3oR-Kd-K6R">
+            <objects>
+                <controller id="QR3-8B-2EJ" customClass="InterfaceController" customModule="ClassActivity_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Game Schedule" id="HfT-P9-TOs">
+                            <color key="textColor" red="0.8523843169327846" green="0.94628410532994922" blue="0.2674655311493353" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <table alignment="left" id="Jdr-Ev-zoS">
+                            <items>
+                                <tableRow identifier="row1" id="U3F-PF-9Lk" customClass="MenuItemController" customModule="ClassActivity_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="1P1-fW-b4l">
+                                        <items>
+                                            <label alignment="left" text="Label" id="pyt-pV-jFf"/>
+                                            <label alignment="left" text="Label" id="mRO-Nc-A1g"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="placeLabel" destination="pyt-pV-jFf" id="oJP-2W-R9O"/>
+                                        <outlet property="timeLabel" destination="mRO-Nc-A1g" id="jMi-vW-lDu"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <label width="130" height="29" alignment="left" text="Label" id="gEq-fD-zQa"/>
+                    </items>
+                    <connections>
+                        <outlet property="WatchTable" destination="Jdr-Ev-zoS" id="ZY5-4j-kSY"/>
+                        <outlet property="messageLabel" destination="gEq-fD-zQa" id="DaG-F7-8VP"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="18" y="-5"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="aPN-ez-Hqf">
+            <objects>
+                <controller id="3oP-n0-kQe">
+                    <items>
+                        <label width="136" alignment="left" text="Subscribed Game" id="6H2-CX-2GB">
+                            <color key="textColor" red="0.85238431690000005" green="0.94628410529999996" blue="0.26746553109999999" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-251" y="369"/>
+        </scene>
+        <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ClassActivity_WatchKit_App" customModuleProvider="target">
@@ -17,9 +84,6 @@
                         <button width="1" alignment="left" title="Button" id="BCF-eK-4pe"/>
                         <label alignment="center" verticalAlignment="bottom" text="Label" id="J7N-fb-uJb"/>
                     </items>
-                    <connections>
-                        <outlet property="messageLabel" destination="J7N-fb-uJb" id="JeF-mm-IHl"/>
-                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
