@@ -9,19 +9,19 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--MainInterface-->
         <scene sceneID="6vE-hO-UPj">
             <objects>
-                <controller id="EVu-Aq-XZF">
+                <controller identifier="MainInterface" id="EVu-Aq-XZF" customClass="InterfaceController" customModule="ClassActivity_WatchKit_Extension">
                     <items>
                         <button width="1" alignment="left" title="Schedule List" id="RQu-rG-UFx">
                             <connections>
-                                <segue destination="QR3-8B-2EJ" kind="push" id="90Y-bg-NPn"/>
+                                <action selector="btnSchedule" destination="EVu-Aq-XZF" id="h09-pL-M8b"/>
                             </connections>
                         </button>
                         <button width="1" alignment="left" title="Subscribe List" id="Ebn-EY-FgN">
                             <connections>
-                                <segue destination="3oP-n0-kQe" kind="push" id="B4J-2b-pQa"/>
+                                <action selector="btnSubscribe" destination="EVu-Aq-XZF" id="K4x-gL-P4N"/>
                             </connections>
                         </button>
                     </items>
@@ -29,95 +29,85 @@
             </objects>
             <point key="canvasLocation" x="-251" y="-14"/>
         </scene>
-        <!--Interface Controller-->
+        <!--scheduleController-->
         <scene sceneID="3oR-Kd-K6R">
             <objects>
-                <controller id="QR3-8B-2EJ" customClass="InterfaceController" customModule="ClassActivity_WatchKit_Extension">
+                <controller identifier="scheduleController" id="QR3-8B-2EJ" customClass="ScheduleController" customModule="ClassActivity_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="Game Schedule" id="HfT-P9-TOs">
                             <color key="textColor" red="0.8523843169327846" green="0.94628410532994922" blue="0.2674655311493353" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
                         <table alignment="left" id="Jdr-Ev-zoS">
                             <items>
-                                <tableRow identifier="row1" id="U3F-PF-9Lk" customClass="MenuItemController" customModule="ClassActivity_WatchKit_Extension">
-                                    <group key="rootItem" width="1" alignment="left" id="1P1-fW-b4l">
+                                <tableRow identifier="row1" id="U3F-PF-9Lk" customClass="ScheduleCellController" customModule="ClassActivity_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="94" alignment="left" layout="vertical" id="1P1-fW-b4l">
                                         <items>
-                                            <label alignment="left" text="Label" id="pyt-pV-jFf"/>
-                                            <label alignment="left" text="Label" id="mRO-Nc-A1g"/>
+                                            <label alignment="center" verticalAlignment="center" text="Team" id="pyt-pV-jFf"/>
+                                            <label alignment="center" verticalAlignment="bottom" text="Date" id="mRO-Nc-A1g"/>
+                                            <group width="1" alignment="left" id="5DL-vR-uye">
+                                                <items>
+                                                    <imageView width="40" height="40" alignment="right" id="wTB-Je-7kl"/>
+                                                    <imageView width="40" height="40" alignment="left" id="saR-SS-aIt"/>
+                                                </items>
+                                            </group>
                                         </items>
                                     </group>
                                     <connections>
-                                        <outlet property="placeLabel" destination="pyt-pV-jFf" id="oJP-2W-R9O"/>
-                                        <outlet property="timeLabel" destination="mRO-Nc-A1g" id="jMi-vW-lDu"/>
+                                        <outlet property="dateLabel" destination="mRO-Nc-A1g" id="0Xl-3V-r1C"/>
+                                        <outlet property="flag1" destination="saR-SS-aIt" id="fMR-pU-p6i"/>
+                                        <outlet property="flag2" destination="wTB-Je-7kl" id="nhG-Ih-B15"/>
+                                        <outlet property="teamLabel" destination="pyt-pV-jFf" id="h1m-T9-Fxy"/>
                                     </connections>
                                 </tableRow>
                             </items>
                         </table>
-                        <label width="130" height="29" alignment="left" text="Label" id="gEq-fD-zQa"/>
                     </items>
                     <connections>
-                        <outlet property="WatchTable" destination="Jdr-Ev-zoS" id="ZY5-4j-kSY"/>
-                        <outlet property="messageLabel" destination="gEq-fD-zQa" id="DaG-F7-8VP"/>
+                        <outlet property="gameTable" destination="Jdr-Ev-zoS" id="J3k-sf-ugh"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="18" y="-5"/>
         </scene>
-        <!--Interface Controller-->
+        <!--subscribeController-->
         <scene sceneID="aPN-ez-Hqf">
             <objects>
-                <controller id="3oP-n0-kQe">
+                <controller identifier="subscribeController" id="3oP-n0-kQe" customClass="SubscribeListController" customModule="ClassActivity_WatchKit_Extension">
                     <items>
                         <label width="136" alignment="left" text="Subscribed Game" id="6H2-CX-2GB">
                             <color key="textColor" red="0.85238431690000005" green="0.94628410529999996" blue="0.26746553109999999" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         </label>
+                        <table alignment="left" id="YnQ-Iu-iaz">
+                            <items>
+                                <tableRow identifier="subscribeRow" id="aVG-jc-xKe" customClass="SubscribeCellController" customModule="ClassActivity_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="97" alignment="left" layout="vertical" id="abc-7M-OKE">
+                                        <items>
+                                            <group width="1" alignment="left" id="EG1-a5-PAH">
+                                                <items>
+                                                    <imageView width="40" height="40" alignment="left" id="lD7-9v-bMf"/>
+                                                    <imageView width="40" height="40" alignment="right" id="OY1-6D-RHb"/>
+                                                </items>
+                                            </group>
+                                            <label alignment="center" text="Label" id="c7C-4Z-CGc"/>
+                                            <label alignment="center" text="Label" id="9yb-pl-pxV"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="datelabel" destination="9yb-pl-pxV" id="vs8-RF-TgC"/>
+                                        <outlet property="flag1" destination="lD7-9v-bMf" id="0Dm-wd-xQc"/>
+                                        <outlet property="flag2" destination="OY1-6D-RHb" id="jCW-T3-d3e"/>
+                                        <outlet property="teamLable" destination="c7C-4Z-CGc" id="FOk-JK-Qou"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
+                    <connections>
+                        <outlet property="gameListTable" destination="YnQ-Iu-iaz" id="KBB-0e-Cv3"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="-251" y="369"/>
-        </scene>
-        <!--Interface Controller-->
-        <scene sceneID="aou-V4-d1y">
-            <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ClassActivity_WatchKit_App" customModuleProvider="target">
-                    <items>
-                        <button width="1" alignment="left" title="Button" id="BCF-eK-4pe"/>
-                        <label alignment="center" verticalAlignment="bottom" text="Label" id="J7N-fb-uJb"/>
-                    </items>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="220" y="345"/>
-        </scene>
-        <!--Static Notification Interface Controller-->
-        <scene sceneID="AEw-b0-oYE">
-            <objects>
-                <notificationController id="YCC-NB-fut">
-                    <items>
-                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
-                    </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
-                    <connections>
-                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
-                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
-                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
-                    </connections>
-                </notificationController>
-            </objects>
-            <point key="canvasLocation" x="220" y="643"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="ZPc-GJ-vnh">
-            <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="ClassActivity_WatchKit_App" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="468" y="643"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="Niz-AI-uX2">
-            <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="ClassActivity_WatchKit_App" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="468" y="345"/>
         </scene>
     </scenes>
 </document>

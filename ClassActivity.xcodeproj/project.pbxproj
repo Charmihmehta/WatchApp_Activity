@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C1AA1FA222333FCA004C0016 /* MenuItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AA1FA122333FCA004C0016 /* MenuItemController.swift */; };
 		FC1D5D10223168830095F85B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1D5D0F223168830095F85B /* AppDelegate.swift */; };
 		FC1D5D12223168830095F85B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1D5D11223168830095F85B /* ViewController.swift */; };
 		FC1D5D15223168830095F85B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC1D5D13223168830095F85B /* Main.storyboard */; };
@@ -22,8 +21,11 @@
 		FC1D5D37223168840095F85B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1D5D36223168840095F85B /* NotificationController.swift */; };
 		FC1D5D39223168840095F85B /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1D5D38223168840095F85B /* ComplicationController.swift */; };
 		FC1D5D3B223168840095F85B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC1D5D3A223168840095F85B /* Assets.xcassets */; };
-		FCAD2F2A2231E7C5000ACFC8 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAD2F292231E7C5000ACFC8 /* GameObject.swift */; };
+		FCAF2D68223474FE00D9D1FF /* SubscribeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAF2D67223474FE00D9D1FF /* SubscribeListController.swift */; };
+		FCAF2D6A2234766000D9D1FF /* SubscribeCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAF2D692234766000D9D1FF /* SubscribeCellController.swift */; };
 		FCE274E12231FAA2001D70A6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE274E02231FAA2001D70A6 /* TableViewCell.swift */; };
+		FCE274E32233806B001D70A6 /* ScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE274E22233806B001D70A6 /* ScheduleController.swift */; };
+		FCE274E52233969F001D70A6 /* ScheduleCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE274E42233969F001D70A6 /* ScheduleCellController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +71,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C1AA1FA122333FCA004C0016 /* MenuItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemController.swift; sourceTree = "<group>"; };
 		FC1D5D0C223168830095F85B /* ClassActivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassActivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC1D5D0F223168830095F85B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC1D5D11223168830095F85B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,8 +90,11 @@
 		FC1D5D3A223168840095F85B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC1D5D3C223168840095F85B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC1D5D3D223168840095F85B /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		FCAD2F292231E7C5000ACFC8 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
+		FCAF2D67223474FE00D9D1FF /* SubscribeListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeListController.swift; sourceTree = "<group>"; };
+		FCAF2D692234766000D9D1FF /* SubscribeCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeCellController.swift; sourceTree = "<group>"; };
 		FCE274E02231FAA2001D70A6 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		FCE274E22233806B001D70A6 /* ScheduleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleController.swift; sourceTree = "<group>"; };
+		FCE274E42233969F001D70A6 /* ScheduleCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCellController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +144,6 @@
 				FC1D5D16223168830095F85B /* Assets.xcassets */,
 				FC1D5D18223168830095F85B /* LaunchScreen.storyboard */,
 				FC1D5D1B223168830095F85B /* Info.plist */,
-				FCAD2F292231E7C5000ACFC8 /* GameObject.swift */,
 				FCE274E02231FAA2001D70A6 /* TableViewCell.swift */,
 			);
 			path = ClassActivity;
@@ -166,7 +169,10 @@
 				FC1D5D3A223168840095F85B /* Assets.xcassets */,
 				FC1D5D3C223168840095F85B /* Info.plist */,
 				FC1D5D3D223168840095F85B /* PushNotificationPayload.apns */,
-				C1AA1FA122333FCA004C0016 /* MenuItemController.swift */,
+				FCE274E22233806B001D70A6 /* ScheduleController.swift */,
+				FCE274E42233969F001D70A6 /* ScheduleCellController.swift */,
+				FCAF2D692234766000D9D1FF /* SubscribeCellController.swift */,
+				FCAF2D67223474FE00D9D1FF /* SubscribeListController.swift */,
 			);
 			path = "ClassActivity WatchKit Extension";
 			sourceTree = "<group>";
@@ -306,7 +312,6 @@
 				FC1D5D12223168830095F85B /* ViewController.swift in Sources */,
 				FCE274E12231FAA2001D70A6 /* TableViewCell.swift in Sources */,
 				FC1D5D10223168830095F85B /* AppDelegate.swift in Sources */,
-				FCAD2F2A2231E7C5000ACFC8 /* GameObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,9 +319,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCE274E52233969F001D70A6 /* ScheduleCellController.swift in Sources */,
 				FC1D5D37223168840095F85B /* NotificationController.swift in Sources */,
 				FC1D5D39223168840095F85B /* ComplicationController.swift in Sources */,
-				C1AA1FA222333FCA004C0016 /* MenuItemController.swift in Sources */,
+				FCAF2D6A2234766000D9D1FF /* SubscribeCellController.swift in Sources */,
+				FCE274E32233806B001D70A6 /* ScheduleController.swift in Sources */,
+				FCAF2D68223474FE00D9D1FF /* SubscribeListController.swift in Sources */,
 				FC1D5D35223168840095F85B /* ExtensionDelegate.swift in Sources */,
 				FC1D5D33223168840095F85B /* InterfaceController.swift in Sources */,
 			);

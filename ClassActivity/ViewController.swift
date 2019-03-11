@@ -9,30 +9,17 @@
 import UIKit
 import WatchConnectivity
 
-struct listGame{
-    var list:String
-    var date: String
-    var flag: Bool
-}
+//struct listGame{
+//    var list:String
+//    var date: String
+//    var flag: Bool
+//}
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,WCSessionDelegate {
-    
-    @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var subscribeBtn: UIButton!
-    var wcSession : WCSession!
-    let dic1  = NSMutableDictionary()
-    var listgame = [listGame(list: "Germany-China", date: "08 June 2019", flag: true) , listGame(list: "Spain-South Africa", date: "08 June 2019", flag: true), listGame(list: "Norway-Nigeria" , date: "08 June 2019", flag: true), listGame(list: "Austraila-Italy", date: "09 June 2019", flag: true), listGame(list: "Brazil-Jamaica" , date: "0 June 2019", flag: true), listGame(list: "England-Scotland", date: "09 June 2019", flag: true)]
-  
-   
-//    let list = ["Germany-China" ,"Spain-South Africa","Norway-Nigeria" , "Austraila-Italy" , "Brazil-Jamaica" , "England-Scotland"]
-//    let date = ["08 June 2019" , "08 June 2019" , "08 June 2019" , "09 June 2019", "09 June 2019", "09 June 2019"]
-    
-    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
     }
+    
     func sessionDidBecomeInactive(_ session: WCSession) {
         
     }
@@ -41,38 +28,97 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var subscribeBtn: UIButton!
+    var wcSession : WCSession!
+    
+    var listGame : [[String : String]] = []
+    
+   
+    //let dic1  = NSMutableDictionary()
+  //  var listgame = [listGame(list: "Germany-China", date: "08 June 2019", flag: true) , listGame(list: "Spain-South Africa", date: "08 June 2019", flag: true), listGame(list: "Norway-Nigeria" , date: "08 June 2019", flag: true), listGame(list: "Austraila-Italy", date: "09 June 2019", flag: true), listGame(list: "Brazil-Jamaica" , date: "0 June 2019", flag: true), listGame(list: "England-Scotland", date: "09 June 2019", flag: true)]
+    
+    
+    
+    
+   
+    // MARK: - WCSessionDelegate
+    
 
+
+    
+
+
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        listGame = [["Team" : "Germany-China", "Date" : "08 June 2019" , "Flag" : "0", "image1" : "brazil" , "image2" : "china"], ["Team" : "Spain-South Africa", "Date" : "08 June 2019" , "Flag" : "0", "image1" : "spain" , "image2" : "south-africa"], ["Team" : "Norway-Nigeria", "Date" : "08 June 2019" , "Flag" : "0", "image1" : "norway" , "image2" : "nigeria"] , ["Team" :"Austraila-Italy", "Date" : "09 June 2019" , "Flag" : "0" ,"image1" : "australia" , "image2" : "flag"],  ["Team" : "Brazil-Jamaica", "Date" : "09 June 2019" , "Flag" : "0" ,"image1" : "brazil" , "image2" : "jamaica"], ["Team" : "England-Scotland", "Date" : "09 June 2019" , "Flag" : "0", "image1" : "england" , "image2" : "scotland"]]
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        // createGameObjects()
+        let demoData = ["demoKey" : listGame]
+        wcSession.sendMessage(demoData, replyHandler: nil) { (err) in
+            print(err.localizedDescription)
+        }
+        var subList  = [[String:String]]()
+        for game in listGame{
+            if(game["Flag"] == "1"){
+                subList.append(game)
+            }
+        }
+        
+//        let demoData1 = ["Kaik": subList]
+//        wcSession.sendMessage(demoData1, replyHandler: nil) { (err) in
+//            print(err.localizedDescription)
+//        }
+        self.tableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+       
+        
+     
+        
         wcSession = WCSession.default
         wcSession.delegate = self
         wcSession.activate()
+        
+        
+
+        
+        //MARK: Game object function
+        
+      
+        //MARK: Table view delegates
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
         self.tableView.reloadData()
-        print("Array Data: \(listgame)")
+        
+
     }
     
-   
+    //MARK: Table view functions
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return listgame.count
+            return listGame.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-      // var cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell") as! TableViewCell
-//        if cell == nil {
-//            cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "cell") as! TableViewCell
-//        }
-        cell.textLabel?.text = listgame[indexPath.row].list
-        cell.detailTextLabel?.text = listgame[indexPath.row].date
-        if(listgame[indexPath.row].flag == true){
-            cell.subscribeBtn.setTitle("Subscribe", for: .normal)
+  
+        cell.textLabel?.text = listGame[indexPath.row]["Team"] 
+        cell.detailTextLabel?.text = listGame[indexPath.row]["Date"]
+        if(listGame[indexPath.row]["Flag"]  == "1"){
+            cell.subscribeBtn.setTitle("Unsubscribe", for: .normal)
         }
         else{
-            cell.subscribeBtn.setTitle("Unsubscribe", for: .normal)
+            cell.subscribeBtn.setTitle("Subscribe", for: .normal)
         }
     
         cell.subscribeBtn.tag = indexPath.row
@@ -85,73 +131,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    
-    // func sends array data to watch
-    func sendToWatch(){
-        let session = WCSession.default
-        
-        if session.activationState == .activated {
-            let appDictionary = ["Array": listgame]
-            do {
-                try session.updateApplicationContext(appDictionary)
-            } catch {
-                print(error)
-            }
-            dic1.setObject(listgame, forKey: "myKey" as NSCopying)
-            print("My array = \(dic1.object(forKey: "myKey") as! String)")
-//                    UserDefaults().set(listGame.self, forKey: "myList")
-//                    if let loadedCart = UserDefaults().array(forKey: "myList") as? [[String: AnyObject]] {
-//                        print(loadedCart)
-//                        for item in loadedCart {
-//                            print(item["list"] as! String)
-//                            print(item["date"] as! Date)
-//                            print(item["flag"] as! Bool)
-//                        }
-//                    }
 
-            }
-        }
-    
    
     
     @IBAction func BtnAction(_ sender: UIButton){
         print("You have clicked subscribe to the notification")
         let no = sender.tag
         
-        listgame[no].flag = listgame[no].flag == true ? false : true
-        tableView.reloadData()
+        listGame[no]["Flag"]  = listGame[no]["Flag"] == "1" ? "0" : "1"
+        
+        
+       let demoData = ["demoKey" : listGame]
+        
+        wcSession.sendMessage(demoData, replyHandler: nil) { (err) in
+            print(err.localizedDescription)
+        }
         print(no)
+//        var alert = UIAlertController(title: "Warning", message: "Aler for Send data\(demoData)", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
+//        present(alert, animated: true)
+        tableView.reloadData()
         
     }
-
-    @IBAction func sendBtnClick(_ sender: Any) {
-        sendToWatch()
-        print(listgame)
-    }
-    
-    @IBAction func btnClick(_ sender: Any) {
-       if(subscribeBtn.titleLabel?.text == "Subscribe")
-       {
-         print("You have subscribe to the notification")
-         NSLog("%@", "button 1")
-         subscribeBtn.setTitle("UnSubscribe", for: .normal)
-        
-//        let message = ["message" : "message sent"]
-//        do {
-//            try wcSession.updateApplicationContext(message)
-//        } catch {
-//            print("Something went wrong")
-//        }
-       
-        }
-       else if (subscribeBtn.titleLabel?.text == "UnSubscribe"){
-          print("You have Not subcribe to the notification")
-        NSLog("%@", "button 2")
-            subscribeBtn.setTitle("Subscribe", for: .normal)
-       
-        }
-    }
-    
 
 
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-       
+//        if(WCSession.isSupported()){
+//            let session = WCSession.default
+//            session.delegate = self
+//            session.activate()
+//        }
         return true
     }
 
@@ -44,4 +49,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
+//extension AppDelegate: WCSessionDelegate {
+//    
+//    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+//        print("Message received: ",message)
+//    }
+//    
+//    //below 3 functions are needed to be able to connect to several Watches
+//    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {}
+//    
+//    func sessionDidDeactivate(_ session: WCSession) {}
+//    
+//    func sessionDidBecomeInactive(_ session: WCSession) {}
+//}
